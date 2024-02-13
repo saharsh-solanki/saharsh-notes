@@ -1,9 +1,7 @@
+**Table of contents**
+1. Python 
+2. Java Script
+3. [Database Concepts](Database Concepts.html)
+
 ---
-description: This page contains the roadmap to the devops page.
----
-
-# Devops
-
-
-
-*
+Author :- Saharsh Solanki
