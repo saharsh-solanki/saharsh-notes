@@ -15,11 +15,15 @@ Let's use a simple example to illustrate a transaction involving account debit a
 |Account B|$300.00 |
 To Debit $100 From Account A and credit to B. This transfer can be represented as a transaction:
 1. BEGIN Transaction :
+
 	`SELECT BALANCE FROM ACCOUNTS WHERE AccountName='Account A'`
 2. Check if the user has enough money 
+
 	`BALANCE >= 100`
 3. If yes 
+
 	`UPDATE Accounts SET balance=balace-100 WHERE AccountName='Account A'`
+
 	`UPDATE Accounts SET balance=balace+100 WHERE AccountName='Account b'`
 4. Commit the Transaction  
 
@@ -30,4 +34,5 @@ To Debit $100 From Account A and credit to B. This transfer can be represented a
 4. Crash 
 
 **Transaction can be used to modify data**
+
 **Transaction can be used For read-only data**
