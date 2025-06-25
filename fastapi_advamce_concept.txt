@@ -1,0 +1,10 @@
+1. Dependency Injection
+2. Pydantic models 
+3.async routes (FastAPI).
+4. API versioning
+5. middlewares 
+6. JWT-based auth.
+
+Question 
+1. What is the diffrence between Docs and Redocs?
+2. Why Do we need to create a SqlAlchemy Session? :- The database session and a sqlalchemy session is diffrent. The DB Session is created once and the SqlAlechemry session is created each time we hit the API, SqlAlechemry session Keep track of the changes we do and only execute then when we run the .commit() method also , For exampek when you use user=User.get(1)  So if you call the same things again its not going to call the Query again its going to retrivve the change from the sql alcheyr sesison, for example if we user.name = "Saharsh " so at this point of time its not going to apply the change in the database when we are going to use the commit method its goign to apply this change sin the db.
