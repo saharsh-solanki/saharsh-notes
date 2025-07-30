@@ -1,0 +1,10 @@
+minikube start 
+eval $(minikube docker-env)
+
+docker build -t eshoper-app .
+
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+
+kubectl rollout restart deployment eshoper-app-deployment
