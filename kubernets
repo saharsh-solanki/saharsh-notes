@@ -8,3 +8,56 @@ kubectl apply -f service.yaml
 
 
 kubectl rollout restart deployment eshoper-app-deployment
+
+
+
+Question :- 
+1. PODS
+2. Nodes
+3. Cluster 
+4. Container 
+
+* How to inject dynamic configs or secrets into pods
+There two type :- Secret and ConfigMap 
+ConfigMap :- is used to provide the no sestive data like API Url Can be passed from to the pod using enviornment varibale
+ConfigMap :- 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  DATABASE_URL: "postgres://user@host:5432/db"
+  FEATURE_FLAG: "true"
+
+Secret :-
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+type: Opaque
+data:
+  DB_PASSWORD: cGFzc3dvcmQ=     # "password" in base64
+* We ussaly not keep the password here either We use like {{ DB_PAPSSWORD }} and on the time of CICD run we fetch it from here or we can use AWS Secret Manager 
+ Example Using in the POD file 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secret-demo
+spec:
+  containers:
+    - name: app
+      image: myapp:latest
+      env:
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: app-secret
+              key: DB_PASSWORD
+
+
+
+1. POD is smallest deployment unit in kubernets , 
+
+# Diffrent between Deployment and POD
+# What Are name Space in Kubernets 
+# How to inject dynamic configs or secrets into pods
